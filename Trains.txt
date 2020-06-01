@@ -1,0 +1,24 @@
+USER collections
+	- Login User with username and password.
+
+Create Token
+	- Create token with saving the data by using email and role.
+
+Middleware 
+	- To Authenticate User.
+	- To check the role.
+
+Stations Collecitons
+	- Add Stations
+
+Trains Collections
+	- List of trains.
+	- Each Train Contains
+		-Train number
+		-Trin Name
+		-Start time
+		-End time
+		-Stops -- array of station id's, Fare, Arrival Time, Departuere time.
+
+Tickets collection
+	-Train No., From Station, To Station, Date of booking, Date of journey, Passengers Details[], Fare.
