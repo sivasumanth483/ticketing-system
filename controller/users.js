@@ -5,7 +5,7 @@ class userController {
     async login({ email, password }) {
         try {
             let responseObject = {};
-            let userData = await usersModel.find({ email }, "email password age gender role name");
+            let userData = await usersModel.find({ email }, "email password age gender role name").exec();;
             console.log(typeof userData)
             let validateUser;
             console.log("User Details Retrived");

@@ -128,7 +128,7 @@ class ticketsController {
             console.log(cancelledData);
             if (cancelledData.nModified == 1) {
                 responseObj.status = 200;
-                responseObj.message = "Ticket cancelled successfully";
+                responseObj.message = "Ticket has been cancelled successfully. Amount will be refunded in 7 business working days";
                 responseObj.data = {
                     ticketId: bookingId
                 };

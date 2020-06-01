@@ -1,0 +1,21 @@
+{
+    "admin": {
+        "/api/stations": "Allow",
+        "/api/bookticket": "Allow",
+        "/api/tickethistory": "Allow",
+        "/api/findprice": "Allow",
+        "/api/cancelticket": "Allow",
+        "/api/searchtrains": "Allow",
+        "/api/addtrain": "Allow",
+        "/api/deletetrainstation": "Allow"
+    },
+    "user": {
+        "/api/stations": "Allow",
+        "/api/bookticket": "Allow",
+        "/api/tickethistory": "Allow",
+        "/api/findprice": "Allow",
+        "/api/cancelticket": "Allow",
+        "/api/searchtrains": "Allow",
+        "/api/addtrain": "Deny"
+    }
+}
