@@ -7,7 +7,9 @@
         "/api/cancelticket": "Allow",
         "/api/searchtrains": "Allow",
         "/api/addtrain": "Allow",
-        "/api/deletetrainstation": "Allow"
+        "/api/deletetrainstation": "Allow",
+        "/api/deletetrain": "Allow",
+        "/api/updatestations": "Allow"
     },
     "user": {
         "/api/stations": "Allow",

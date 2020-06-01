@@ -22,13 +22,13 @@ class trainsController {
                             }
                         ]
                     }
-                },{
-                    $project:{
-                        no:1,
-                        name:1,
-                        type:1,
-                        sourceId:1,
-                        destinationId:1
+                }, {
+                    $project: {
+                        no: 1,
+                        name: 1,
+                        type: 1,
+                        sourceId: 1,
+                        destinationId: 1
                     }
                 }
             ]);
@@ -39,7 +39,7 @@ class trainsController {
                         mongoose.Types.ObjectId(destinationStationID)
                     ]
                 }
-            },"stationname code").exec();
+            }, "stationname code").exec();
             console.log("stationData retrived");
             let trainsList = this.getTrainsList(trainsData, stationData, sourceStationId, destinationStationID);
 
@@ -56,6 +56,8 @@ class trainsController {
             train.modifiedby = userData.email;
             train.sourceId = mongoose.Types.ObjectId(train.journey[0]["stationId"]);
             train.destinationId = mongoose.Types.ObjectId(train.journey[train.journey.length - 1]["stationId"]);
+            train.endtime = train.journey[train.journey.length - 1]["arrival"]
+            train.starttime = train.journey[0]["arrival"];
             train.createdby = userData.email;
             train.modifiedby = userData.email;
             train.createddate = getTimeStamp();
@@ -64,7 +66,7 @@ class trainsController {
             let addTraindata = new trainsModel(train);
             let addTrainResponse = await addTraindata.save();
             addTrainResponse = JSON.parse(JSON.stringify(addTrainResponse));
-            console.log(addTrainResponse);
+            console.log("Train addes successfully");
             responseObj.status = 200;
             responseObj.message = "Train data added";
             responseObj.data = addTrainResponse;
@@ -79,7 +81,7 @@ class trainsController {
         }
 
     }
-    
+
     convertJourneyIdToObjectId(journey) {
 
         journey.forEach(station => {
@@ -149,6 +151,54 @@ class trainsController {
         return travelObj;
     }
 
+    async deleteTrain(trainId) {
+        try {
+            let responseObj = {};
+            let deleteStatus = await trainsModel.findByIdAndDelete(trainId);
+            console.log("Train Deleted");
+            responseObj.status = 200;
+            responseObj.message = "Resource deleted";
+            return responseObj;
+        } catch (error) {
+            console.log(error, error.stack);
+            let responseObj = {};
+            console.log(error, error.stack);
+            responseObj.status = 500;
+            responseObj.message = "Internal Server error";
+            return responseObj;
+        }
+    }
+
+    async updateTrain(trainId, journey, userdetails) {
+        try {
+            let responseObj = {};
+            let updateObj = {
+                $set: {
+                    journey,
+                    modifieddate: getTimeStamp(),
+                    modifiedby: userdetails.email
+                }
+            };
+            let data = await trainsModel.findByIdAndUpdate(trainId, updateObj).exec();
+            console.log(data);
+            data = data.toObject();
+            responseObj.status = 200;
+            responseObj.message = "Resource deleted";
+            responseObj.data = {
+                trainId: data._id
+            };
+            return responseObj;
+        } catch (error) {
+            console.log(error, error.stack);
+            let responseObj = {};
+            console.log(error, error.stack);
+            responseObj.status = 500;
+            responseObj.message = "Internal Server error";
+            return responseObj;
+        }
+
+
+    }
 }
 
 module.exports = trainsController;

@@ -56,5 +56,26 @@ module.exports = {
             }
 
         });
+
+        app.delete("/api/deletetrain", middleware, async function (req, res) {
+            try {
+                let responseObj = await trains.deleteTrain(req.body.trainId);
+                res.send(responseObj);
+            } catch (error) {
+                let responseObj = {};
+                console.log(error, error.stack);
+                responseObj.status = 500;
+                responseObj.message = "Internal Server error";
+                res.send(responseObj);
+            }
+        });
+
+        app.post("/api/updatestations", middleware, async function (req, res) {
+            console.log(req.body);
+            let { trainId, journey } = req.body;
+            let userDetails = req.userData;
+            let response = await trains.updateTrain(trainId, journey, userDetails);
+            res.send(response);
+        });
     }
 };

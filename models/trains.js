@@ -20,6 +20,14 @@ const trainsSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         required: true
     },
+    "starttime": {
+        type: String,
+        required: true
+    },
+    "endtime": {
+        type: String,
+        required: true
+    },
     "journey": [
         {
             "stationId": {

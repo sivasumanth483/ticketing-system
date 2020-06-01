@@ -10,11 +10,16 @@ class ticketsController {
             console.log(email);
             let ticketHistory = await ticketsModel.aggregate([
                 {
-                    "$match": { "createdby": email }
+                    $match: {
+                        createdby: "siva@test.com"
+                    }
                 }
             ]);
+            ticketHistory = ticketHistory.toObject();
             console.log("Tickets ", ticketHistory.length);
+
             let trainsIds = [];
+
             ticketHistory.forEach(tickets => {
                 trainsIds.push({ "_id": mongoose.Types.ObjectId(tickets.train) });
             });

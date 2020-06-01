@@ -18,10 +18,10 @@ module.exports = {
             }
         });
 
-        app.get("/api/tickethistory", middleware, function (req, res) {
+        app.get("/api/tickethistory", middleware, async function (req, res) {
             try {
                 console.log(req.userData);
-                tickets.bookingHistory(req.userData);
+                await tickets.bookingHistory(req.userData);
                 res.send(req.userData);
             } catch (error) {
                 let responseObj = {};
