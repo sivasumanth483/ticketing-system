@@ -6,6 +6,7 @@ class userController {
         try {
             let responseObject = {};
             let userData = await usersModel.find({ email }, "email password age gender role name");
+            console.log(typeof userData)
             let validateUser;
             console.log("User Details Retrived");
             if (userData.length >= 1) {
@@ -13,8 +14,11 @@ class userController {
                 if (validateUser) {
                     responseObject.status = 200;
                     responseObject.message = "Authentication Successful";
-                    responseObject.data = userData[0];
-                    delete responseObject.data.password;
+                    responseObject.data = {};
+                    responseObject.data["name"] = userData[0]["name"];
+                    responseObject.data["email"] = userData[0]["email"];
+                    responseObject.data["age"] = userData[0]["age"];
+                    responseObject.data["role"] = userData[0]["role"];
                     return responseObject;
                 } else {
                     responseObject.status = 401;
@@ -22,6 +26,12 @@ class userController {
                     return responseObject;
                 }
 
+            } else {
+                {
+                    responseObject.status = 401;
+                    responseObject.message = "User not found";
+                    return responseObject;
+                }
             }
         } catch (error) {
             let responseObj = {};

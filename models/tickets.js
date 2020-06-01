@@ -1,25 +1,67 @@
 const mongoose = require('mongoose');
 const ticketSchema = mongoose.Schema({
-    "sourceId": mongoose.Types.ObjectId,
-    "destinationId": mongoose.Types.ObjectId,
-    "trainId": mongoose.Schema.Types.ObjectId,
-    "journeydate": Number,
-    "bookingdate": Number,
+    "sourceId": {
+        type: mongoose.Types.ObjectId,
+        required: true
+    },
+    "destinationId": {
+        type: mongoose.Types.ObjectId,
+        required: true
+    },
+    "trainId": {
+        type: mongoose.Types.ObjectId,
+        required: true
+    },
+    "journeydate": {
+        type: Number,
+        required: true
+    },
+    "bookingdate": {
+        type: Number,
+        required: true
+    },
     "passengers": [
         {
-            "name": String,
-            "age": Number,
-            "gender": String
+            "name": {
+                type: String,
+                required: true
+            },
+            "age": {
+                type: Number,
+                required: true
+            },
+            "gender": {
+                type: String,
+                required: true
+            }
         }
     ],
-    "phone": Number,
-    "price": Number,
-    "payment": String,
-    "bookingstatus": String,
-    "createddate": Number,
-    "modifieddate": Number,
-    "createdby": String,
-    "modifiedby": String
+    "phone": {
+        type: Number,
+        required: true
+    },
+    "price": {
+        type: Number,
+        required: true
+    },
+    "payment": {
+        type: String
+    },
+    "bookingstatus": {
+        type: String
+    },
+    "createddate": {
+        type: Number
+    },
+    "modifieddate": {
+        type: Number
+    },
+    "createdby": {
+        type: String
+    },
+    "modifiedby": {
+        type: String
+    }
 });
 
 module.exports = mongoose.model('bookings', ticketSchema);
