@@ -4,11 +4,11 @@
 
 To install the dependencies
 
-<code>npm install<code>
+<code>npm install</code>
 
 To start the application 
 
-<code>npm start<code>
+<code>npm start</code>
 
 <h2>Routes List</h2>
 
