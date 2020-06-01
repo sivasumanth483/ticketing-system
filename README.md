@@ -1,6 +1,6 @@
 # ticketing-system
 
-#initial setup
+<h2>initial setup</h2>
 
 To install the dependencies
 
@@ -10,7 +10,7 @@ To start the application
 
 npm start
 
-#Routes List
+<h2>Routes List</h2>
 
 routeslist.json to get all the routes
 
