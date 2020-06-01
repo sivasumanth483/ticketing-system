@@ -18,7 +18,7 @@ class ticketsController {
             ticketHistory = ticketHistory.toObject();
             console.log("Tickets ", ticketHistory.length);
 
-            let trainsIds = [];
+            let trainsIds = []; 
 
             ticketHistory.forEach(tickets => {
                 trainsIds.push({ "_id": mongoose.Types.ObjectId(tickets.train) });

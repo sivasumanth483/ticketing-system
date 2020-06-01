@@ -1,0 +1,68 @@
+[
+    {
+        "path": "/api/login",
+        "methods": [
+            "POST"
+        ]
+    },
+    {
+        "path": "/api/stations",
+        "methods": [
+            "POST"
+        ]
+    },
+    {
+        "path": "/api/searchtrains",
+        "methods": [
+            "POST"
+        ]
+    },
+    {
+        "path": "/api/addtrain",
+        "methods": [
+            "POST"
+        ]
+    },
+    {
+        "path": "/api/deletetrainstation",
+        "methods": [
+            "POST"
+        ]
+    },
+    {
+        "path": "/api/deletetrain",
+        "methods": [
+            "DELETE"
+        ]
+    },
+    {
+        "path": "/api/updatestations",
+        "methods": [
+            "POST"
+        ]
+    },
+    {
+        "path": "/api/bookticket",
+        "methods": [
+            "POST"
+        ]
+    },
+    {
+        "path": "/api/tickethistory",
+        "methods": [
+            "GET"
+        ]
+    },
+    {
+        "path": "/api/findprice",
+        "methods": [
+            "POST"
+        ]
+    },
+    {
+        "path": "/api/cancelticket",
+        "methods": [
+            "POST"
+        ]
+    }
+]
