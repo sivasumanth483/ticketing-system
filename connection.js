@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// mongoose.connect('mongodb+srv://practice:practice@cluster0-vhzh0.mongodb.net/test?retryWrites=true&w=majority', {
 console.log(process.env.DBSRV);
 mongoose.connect(process.env.DBSRV, {
     useNewUrlParser: true,
